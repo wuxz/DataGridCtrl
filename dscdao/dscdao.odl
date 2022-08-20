@@ -1,0 +1,111 @@
+// dscdao.odl : type library source for ActiveX Control project.
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (dscdao.tlb) that will become a resource in
+// dscdao.ocx.
+
+/*
+Copyright Adrian Roman, aroman@medanet.ro
+
+You can use the code free of charge, you can modify it, but the author (Adrian Roman) 
+is not responsible of any kind of damage or loss of data or loss of profit, 
+incidental or consequential, occurred using this code. 
+You cannot claim that the code is written by yourself, even the code is modified.
+If you use this control, you must make a notice (in About box and/or startup splash screen 
+and/or help file) that the program contains code developed by Adrian Roman, 
+e-mail: aroman@medanet.ro.
+*/
+
+#include <olectl.h>
+#include <idispids.h>
+
+
+[ uuid(64D3F3D3-494D-11D2-BC7D-0000216A06C9), version(1.0),
+  helpstring("dscdao ActiveX Control module"),
+  control ]
+library DSCDAOLib
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	//  Primary dispatch interface for CDscdaoCtrl
+
+	[ uuid(64D3F3D4-494D-11D2-BC7D-0000216A06C9),
+	  helpstring("Dispatch interface for Dscdao Control"), hidden ]
+	dispinterface _DDscdao
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CDscdaoCtrl)
+			[id(DISPID_APPEARANCE), bindable, requestedit] short Appearance;
+			[id(DISPID_BACKCOLOR), bindable, requestedit] OLE_COLOR BackColor;
+			[id(DISPID_FONT), bindable] IFontDisp* Font;
+			[id(DISPID_CAPTION), bindable, requestedit] BSTR Caption;
+			[id(DISPID_FORECOLOR), bindable, requestedit] OLE_COLOR ForeColor;
+			[id(1)] boolean ShowAddnewButton;
+			[id(2)] boolean ShowCancelButton;
+			[id(3)] boolean ShowUpdateButton;
+			[id(4)] BSTR DatabasePath;
+			[id(5)] BSTR TableName;
+			[id(6)] BSTR IndexName;
+			[id(7)] boolean ReadOnly;
+			[id(8)] short OpenType;
+			[id(9)] short SqlType;
+			[id(10)] BSTR SqlString;
+			[id(11)] OLE_COLOR DrawColor;
+			[id(12)] boolean OpenExclusive;
+			[id(13)] BSTR Password;
+			[id(14)] boolean LockingMode;
+			//}}AFX_ODL_PROP
+
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CDscdaoCtrl)
+			[id(15)] void Next();
+			[id(16)] void Previous();
+			[id(17)] void Beginning();
+			[id(18)] void End();
+			[id(19)] void AddNew();
+			[id(20)] void Delete();
+			[id(21)] void CancelUpdate();
+			[id(22)] void Update();
+			[id(23)] void BeginTransaction();
+			[id(24)] void CommitTransaction();
+			[id(25)] void Rollback();
+			//}}AFX_ODL_METHOD
+
+//			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+
+	//  Event dispatch interface for CDscdaoCtrl
+
+	[ uuid(64D3F3D5-494D-11D2-BC7D-0000216A06C9),
+	  helpstring("Event interface for Dscdao Control") ]
+	dispinterface _DDscdaoEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			// NOTE - ClassWizard will maintain event information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_EVENT(CDscdaoCtrl)
+			//}}AFX_ODL_EVENT
+	};
+
+	//  Class information for CDscdaoCtrl
+
+	[ uuid(64D3F3D6-494D-11D2-BC7D-0000216A06C9),
+	  helpstring("Dscdao Control"), control ]
+	coclass Dscdao
+	{
+		[default] dispinterface _DDscdao;
+		[default, source] dispinterface _DDscdaoEvents;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};
